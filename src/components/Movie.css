@@ -1,0 +1,66 @@
+body {
+    background-color: black;
+}
+.title {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+}
+.container-img {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+.info {
+    flex-direction: column;
+    color : white;
+}
+
+
+.imagen {
+    width: 40vw;
+    object-fit: contain;
+}
+.genres {
+    display: flex;
+    justify-content: space-around;    
+}
+.genreStyle{
+
+    outline: 2px solid rgb(119, 115, 115);
+    border-radius: 15px;
+    padding: 5px;
+}
+.production {
+    display: flex;
+    justify-content: space-around;
+}
+.companyStyle {
+
+    outline: 2px solid rgb(119, 115, 115);
+    border-radius: 15px;
+    padding: 5px;
+}
+
+@media screen and (max-width: 738px) {
+    .container-img {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .info {
+        font-size: 25px;
+    }
+    
+}
+
+@media screen and (min-width: 1100px) {
+    .info {
+        font-size: 30px;
+    }
+    
+}
