@@ -1,34 +1,17 @@
-import { useState, useEffect } from 'react'
-import { Link, Route, Routes } from 'react-router-dom'
-import getSearch from './services/getMovies'
+import { useState } from 'react'
+import SearchBar from './components/SearchBar'
 import './App.css'
 import PaginaPrincipal from './contenedores/PaginaPrincipal'
 /* import { useGlobalState } from './context/GlobalState' */
 
 function App () {
-  const [query, setQuery] = useState('')
-  const [movies, setMovies] = useState([])
-  const [error, setError] = useState(false)
-  useEffect(() => {
-    const search = async () => {
-      try {
-        const { data } = await getSearch("tv", {
-          query: query,
-          page: 1
-        })
-        const movies = data.results
+  const [search, setSearch] = useState([])
 
-        setMovies(movies)
-      } catch {
-        setError(true)
-      }
-    }
-    search()
-  }, [query])
-
-  console.log(movies)
+  console.log(search)
 
   return (
+
+    <SearchBar showFilters={true} setOutsideSearch={setSearch} showResults={false} />
 
     <div>
       <Link to='/'>Home</Link>
