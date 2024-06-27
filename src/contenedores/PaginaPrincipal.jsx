@@ -14,7 +14,7 @@ function PaginaPrincipal () {
         <TarjetaRecomendacion title='Un titulo' rating={1} imgPath='https://picsum.photos/200/300' alt='Pelicula 5' />
       </div>
 
-      <h1>Series mas populares populares</h1>
+      <h1>Series mas populares</h1>
       <div className='principal-contenedor-recomendaciones'>
         <TarjetaRecomendacion title='Un titulo' rating={5} imgPath='https://picsum.photos/200/300' alt='Pelicula 1' />
         <TarjetaRecomendacion title='Un titulo' rating={4} imgPath='https://picsum.photos/200/300' alt='Pelicula 2' />
