@@ -1,27 +1,51 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import getSearch from './services/getMovies'
 import './App.css'
-/* import { useGlobalState } from './context/GlobalState' */
 
 function App () {
-  /* const { estadoPrueba, setEstadoPrueba } = useGlobalState()  *//* Los estados se importan del contexto */
-  
+  const [query, setQuery] = useState('')
+  const [movies, setMovies] = useState([])
+  const [error, setError] = useState(false)
   useEffect(() => {
-    getSearch("movie", {
-      query: "batman",
-      page: 1,
-    })
-  }, [])
+    const search = async () => {
+      try {
+        const { data } = await getSearch("tv", {
+          query: query,
+          page: 1
+        })
+        const movies = data.results
+
+        setMovies(movies)
+      } catch {
+        setError(true)
+      }
+    }
+    search()
+  }, [query])
+
+  console.log(movies)
+
   return (
 
     <div>
-      <Link to='/'>Home</Link>
-      <Link to='/about'>About</Link>
-      <Routes>
-        <Route path='/' element={<h1>Home</h1>}>Home</Route>
-        <Route path='/about' element={<h1>About</h1>}>About</Route>
-      </Routes>
+      <input onChange={(event) => {
+        setQuery(event.target.value)
+      }}></input>
+      <div className="movies-container">
+        {
+          !error ? movies.map((movie) => {
+          return (
+            <div key={movie.id}>
+              <Link to={`/movie/${movie.id}`}>
+                <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}  />
+              </Link>
+            </div>
+          )
+        })
+          : <div>error</div>
+        }
+      </div>
     </div>
 
   )
