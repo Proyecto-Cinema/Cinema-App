@@ -1,7 +1,7 @@
-import axiosMovies from './instance.js';
+import axiosMovies from './instance.js'
 
-async function getSearch(type, searchQuery){
-  const params = new URLSearchParams(searchQuery);
+async function getSearch (type, searchQuery) {
+  const params = new URLSearchParams(searchQuery)
   const movies = await axiosMovies.get(`/search/${type}?${params.toString()}`)
   return movies
 }
