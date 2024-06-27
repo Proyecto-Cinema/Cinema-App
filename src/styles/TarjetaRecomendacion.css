@@ -1,0 +1,37 @@
+.lista-peliculas-populares {
+  width: 300px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: gray;
+  /* flex: 1; */
+}
+
+.contenedor-pelicula {
+  display: flex;
+  flex-direction: column;
+  background: gray;
+  align-items: center;
+  padding: 2px;
+  flex: 1;
+}
+
+.imagen-tarjeta {
+  width: 100%;
+  
+}
+
+.contenedor-rating {
+  display: flex;
+  align-items: center;
+  background: gray;
+  gap: 10px;
+  padding: 0px 20px;
+}
+
+.rating-img {
+  width: 30px;
+  height: 30px;
+}
