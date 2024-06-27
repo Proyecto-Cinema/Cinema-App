@@ -1,10 +1,18 @@
+import { useEffect } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
+import getSearch from './services/getMovies'
 import './App.css'
 /* import { useGlobalState } from './context/GlobalState' */
 
 function App () {
   /* const { estadoPrueba, setEstadoPrueba } = useGlobalState()  *//* Los estados se importan del contexto */
-
+  
+  useEffect(() => {
+    getSearch("movie", {
+      query: "batman",
+      page: 1,
+    })
+  }, [])
   return (
 
     <div>
