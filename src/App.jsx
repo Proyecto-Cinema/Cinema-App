@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import getSearch from './services/getMovies'
 import './App.css'
+import PaginaPrincipal from './contenedores/PaginaPrincipal'
+/* import { useGlobalState } from './context/GlobalState' */
 
 function App () {
   const [query, setQuery] = useState('')
@@ -29,23 +31,12 @@ function App () {
   return (
 
     <div>
-      <input onChange={(event) => {
-        setQuery(event.target.value)
-      }}></input>
-      <div className="movies-container">
-        {
-          !error ? movies.map((movie) => {
-          return (
-            <div key={movie.id}>
-              <Link to={`/movie/${movie.id}`}>
-                <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}  />
-              </Link>
-            </div>
-          )
-        })
-          : <div>error</div>
-        }
-      </div>
+      <Link to='/'>Home</Link>
+      <Link to='/about'>About</Link>
+      <Routes>
+        <Route path='/' element={<PaginaPrincipal />}>Home</Route>
+        <Route path='/about' element={<h1>About</h1>}>About</Route>
+      </Routes>
     </div>
 
   )
