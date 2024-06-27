@@ -6,6 +6,9 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 40px;
 }
+.container {
+    padding-top: 50px;
+}
 .container-img {
     display: flex;
     justify-content: center;

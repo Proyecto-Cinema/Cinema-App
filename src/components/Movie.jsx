@@ -1,5 +1,9 @@
 import ReactStars from 'react-rating-stars-component'
 import SearchBar from './SearchBar'
+import './Movie.css'
+import { useEffect, useState } from 'react'
+import getDetails from '../services/getDetails'
+import { useParams } from 'react-router-dom'
 
 
 const mockResponse = {
@@ -83,6 +87,21 @@ const mockResponse = {
       
   }
   function MovieInformation () {
+    const [type, setType] = useState('movie')
+    const { id } = useParams()
+    const [details, setDetails] = useState({})
+
+    useEffect(() => {
+      const getDetails = async () => {
+        try {
+          const info = await getDetails(type, { id: 653346 })
+          console.log(info)
+        } catch (e) {
+          console.log(e)
+        }
+      }
+    }, [])
+
     return (
       <>
     <SearchBar></SearchBar>
