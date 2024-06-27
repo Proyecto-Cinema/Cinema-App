@@ -13,8 +13,14 @@
   display: flex;
   flex-direction: column;
   background: gray;
-  padding: 10px;
+  align-items: center;
+  padding: 2px;
   flex: 1;
+}
+
+.imagen-tarjeta {
+  width: 100%;
+  
 }
 
 .contenedor-rating {
