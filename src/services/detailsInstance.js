@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const axiosMovies = axios.create({
+const axiosDetails = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
   headers: {
     accept: 'application/json',
@@ -8,4 +8,4 @@ const axiosMovies = axios.create({
   }
 })
 
-export default axiosMovies
+export default axiosDetails
