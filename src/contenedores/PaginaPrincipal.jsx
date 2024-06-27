@@ -4,8 +4,7 @@ import TarjetaRecomendacion from './TarjetaRecomendacion'
 import getSearch from '../services/getMovies'
 
 function PaginaPrincipal () {
-  const [mostPopularMovies, setMostPopularMovies] = React.useState([])
-  const [mostPopularTvShows, setMostPopularTvShows] = useState([])
+  const [mostPopularMovies, setMostPopularMovies] = useState([])
 
   useEffect(() => {
     const search = async (queryLine) => {
@@ -14,7 +13,7 @@ function PaginaPrincipal () {
           query: queryLine,
           page: 1
         })
-        const movies = data.results.slice(0, 5) // Limitar a los primeros 5 elementos
+        const movies = data.results.slice(0, 5)
 
         console.log(movies)
         setMostPopularMovies(movies)
@@ -23,39 +22,41 @@ function PaginaPrincipal () {
       }
     }
 
-    // Llamada a la función de búsqueda con una query inicial
     search('popular')
   }, [])
 
   return (
     <div className='contenedor-principal'>
       <h1>Peliculas populares</h1>
-
-      {mostPopularMovies.map((movie) => (
-        <TarjetaRecomendacion
-          key={movie.id} // Añadir una clave única para cada elemento
-          title={movie.title || movie.name || 'Un título'}
-          rating={movie.vote_average || 5}
-          imgPath={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} // Solicitar la imagen correcta
-          alt={movie.title || movie.name || 'Película'}
-        />
-      ))}
-
       <div className='principal-contenedor-recomendaciones'>
-        <TarjetaRecomendacion title='Un titulo' rating={5} imgPath='https://picsum.photos/200/300' alt='Pelicula 1' />
-        <TarjetaRecomendacion title='Un titulo' rating={4} imgPath='https://picsum.photos/200/300' alt='Pelicula 2' />
-        <TarjetaRecomendacion title='Un titulo' rating={3} imgPath='https://picsum.photos/200/300' alt='Pelicula 3' />
-        <TarjetaRecomendacion title='Un titulo' rating={2} imgPath='https://picsum.photos/200/300' alt='Pelicula 4' />
-        <TarjetaRecomendacion title='Un titulo' rating={1} imgPath='https://picsum.photos/200/300' alt='Pelicula 5' />
+        {mostPopularMovies.map((movie) => (
+          <TarjetaRecomendacion
+            key={movie.id}
+            title={movie.title || movie.name || 'Un título'}
+            rating={movie.vote_average || 5}
+            imgPath={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+            alt={movie.title || movie.name || 'Película'}
+            type='movies'
+            id='1234'
+          />
+        ))}
+
       </div>
 
-      <h1>Series mas populares</h1>
-      <div className='principal-contenedor-recomendaciones'>
-        <TarjetaRecomendacion title='Un titulo' rating={5} imgPath='https://picsum.photos/200/300' alt='Pelicula 1' />
-        <TarjetaRecomendacion title='Un titulo' rating={4} imgPath='https://picsum.photos/200/300' alt='Pelicula 2' />
-        <TarjetaRecomendacion title='Un titulo' rating={3} imgPath='https://picsum.photos/200/300' alt='Pelicula 3' />
-        <TarjetaRecomendacion title='Un titulo' rating={2} imgPath='https://picsum.photos/200/300' alt='Pelicula 4' />
-        <TarjetaRecomendacion title='Un titulo' rating={1} imgPath='https://picsum.photos/200/300' alt='Pelicula 5' />
+      <div>
+        <h1>Series mas populares</h1>
+        <div className='principal-contenedor-recomendaciones'>
+          {mostPopularMovies.map((movie) => (
+            <TarjetaRecomendacion
+              key={movie.id}
+              title={movie.title || movie.name || 'Un título'}
+              rating={movie.vote_average || 5}
+              imgPath={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+              alt={movie.title || movie.name || 'Película'}
+
+            />
+          ))}
+        </div>
       </div>
 
       <h1>Famosos más populares</h1>
