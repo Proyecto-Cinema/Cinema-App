@@ -1,0 +1,7 @@
+.principal-contenedor-recomendaciones {
+    display: flex;
+    width: 100vw;
+    justify-content: space-evenly;
+    gap: 30px;
+    margin: 20px 20px;
+}
