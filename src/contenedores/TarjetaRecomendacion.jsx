@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom' // Importa el componente Link de react-r
 
 // Las tarjetas de recomendación para cada pelicula
 function TarjetaRecomendacion ({ rating, imgPath, alt, title, type, id }) {
+  console.log(rating, imgPath, alt, title, type, id)
   return (
     <div to className='contenedor-pelicula'>
       <img className='imagen-tarjeta' src={imgPath} alt={alt} />

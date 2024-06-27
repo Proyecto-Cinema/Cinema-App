@@ -1,8 +1,9 @@
-import axiosDiscover from './detailsInstance.js'
+import axiosDiscover from './discoverInstance'
 
 async function getDiscover (type, searchQuery) {
   const params = new URLSearchParams(searchQuery)
-  const search = await axiosDetails.get(`${type}?${params.toString()}`)
+  console.log(type, searchQuery)
+  const search = await axiosDiscover.get(`${type}?${params.toString()}`)
   return search
 }
 

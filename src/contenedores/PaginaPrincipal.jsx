@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/PaginaPrincipal.css'
 import TarjetaRecomendacion from './TarjetaRecomendacion'
-import getSearch from '../services/getMovies'
+import getSearch from '../services/getDiscover'
+import getDiscover from '../services/getDiscover'
 
 function PaginaPrincipal () {
   const [mostPopularMovies, setMostPopularMovies] = useState([])
@@ -9,8 +10,7 @@ function PaginaPrincipal () {
   useEffect(() => {
     const search = async (queryLine) => {
       try {
-        const { data } = await getSearch('tv', {
-          query: queryLine,
+        const { data } = await getDiscover('tv', {
           page: 1
         })
         const movies = data.results.slice(0, 5)
@@ -22,7 +22,7 @@ function PaginaPrincipal () {
       }
     }
 
-    search('popular')
+    search()
   }, [])
 
   return (
