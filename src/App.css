@@ -1,0 +1,20 @@
+.movies-row{
+    display:flex;
+    flex-direction: row;
+  }
+
+.shows-row{
+    display:flex;
+    flex-direction: row;
+}
+
+.people-row{
+    display:flex;
+    flex-direction: row;
+}
+
+.icons{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
