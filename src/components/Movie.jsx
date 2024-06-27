@@ -1,4 +1,5 @@
 import ReactStars from 'react-rating-stars-component'
+import SearchBar from './SearchBar'
 
 
 const mockResponse = {
@@ -83,6 +84,8 @@ const mockResponse = {
   }
   function MovieInformation () {
     return (
+      <>
+    <SearchBar></SearchBar>
     <div className='container'>
       <h2 className='title'>{mockResponse.title}</h2>
         <div className= 'container-img'>
@@ -107,6 +110,7 @@ const mockResponse = {
             </div>
         </div>           
     </div>
+      </>
     )
   }
 

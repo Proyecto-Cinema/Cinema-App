@@ -26,6 +26,8 @@ p {
   border-radius: 20px;
   padding: 15px;
   gap: 30px;
+  text-decoration: none;
+  color: #fff;
 }
 
 .contenedor-pelicula_informacion {
@@ -43,7 +45,7 @@ p {
 .title-text {
   font-size: 1.2rem;
   height: 50px;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .contenedor-rating {

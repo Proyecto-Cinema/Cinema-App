@@ -234,7 +234,7 @@ function SearchBar ({ canChoose = true, initialType = 'movie', showResults = tru
             ? searches.map((searchItem) => {
               return (
                 <div className='search' key={searchItem.id}>
-                  <Link to={`/${type}/${searchItem.id}`}>
+                  <Link to={`/${type}/details/${searchItem.id}`}>
                     <img
                       onError={(e) => {
                         e.target.src = 'https://th.bing.com/th/id/OIP.iEE5Pq8P83xrKvMzG3g4GQE8DF?rs=1&pid=ImgDetMain'

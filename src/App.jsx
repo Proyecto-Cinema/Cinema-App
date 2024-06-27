@@ -6,18 +6,13 @@ import PaginaPrincipal from './contenedores/PaginaPrincipal'
 /* import { useGlobalState } from './context/GlobalState' */
 
 function App () {
-  const [search, setSearch] = useState([])
-
-  console.log(search)
 
   return (
     <>
       <div>
-        <Link to='/'>Home</Link>
-        <Link to='/about'>About</Link>
         <Routes>
-          <Route path='/' element={<PaginaPrincipal />}>Home</Route>
-          <Route path='/about' element={<h1>About</h1>}>About</Route>
+          <Route path='/' element={<PaginaPrincipal />}></Route>
+          <Route
         </Routes>
       </div>
     </>
