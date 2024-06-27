@@ -1,0 +1,33 @@
+.contenedor-peliculas-apartado{
+    color: white;
+    width: 100vw;
+    background-color: #000;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    padding: 20px ;
+}
+
+.principal-peliculas{
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 70vw;
+    justify-content: space-evenly;
+    padding: 20px 20px;
+    gap: 20px;
+}
+
+.contenedor-pelicula-apartado{
+    padding: 10%;
+    height: 60%;
+    width: 60%;
+}
+
+.filtro-apartado{
+    height: fit-content;
+    width: 30%;
+    background-color: darkgray;
+    margin-right: 10px;
+
+}
