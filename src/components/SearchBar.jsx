@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import SearchItems from './SearchItems'
 import useSearches from '../hooks/useSearches'
 import useFilteredSearches from '../hooks/useFilteredSearches'
@@ -14,9 +15,15 @@ function SearchBar ({ canChoose = true, initialType = 'movie', showResults = tru
   const { filteredSearches } = useFilteredSearches(searches, filters)
 
   return (
-
+    <>
+    
     <nav className='header-nav'>
-      {
+      <div className='links-container'>
+        <Link to='/' className='header-link'>Home</Link>
+      </div>
+      <div className='input-container'>
+
+        {
           canChoose
             ? <select className='select-type' name='type' id='type' onChange={(e) => { setType(e.target.value) }}>
               <option value='movie'>Movies</option>
@@ -25,23 +32,25 @@ function SearchBar ({ canChoose = true, initialType = 'movie', showResults = tru
               </select>
             : null
       }
-      <input
-        className='input-search' onChange={(event) => {
-          setQuery(event.target.value)
-        }}
-      />
+        {
+        showFilters && type !== 'person'
+          ? <GenreSelector type={type} setFilters={setFilters} />
+          : null
+      }
+        <input
+          className='input-search' onChange={(event) => {
+            setQuery(event.target.value)
+          }}
+        />
+
+      </div>
+    </nav>
       {
         showResults
           ? <SearchItems type={type} searches={filteredSearches} />
           : null
       }
-      {
-        showFilters && type !== 'person'
-          ? <GenreSelector type={type} setFilters={setFilters} />
-          : null
-      }
-
-    </nav>
+    </>
 
   )
 }
