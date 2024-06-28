@@ -1,7 +1,9 @@
 .header-nav {
+    top: 0;
+    left: 0;
     display: flex;
     position: fixed;
-    width: 100vw;
+    width: 100dvw;
     height: 60px;
     background-color: #000;
     justify-content: center;

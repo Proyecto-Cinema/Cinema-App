@@ -1,4 +1,6 @@
 body {
+    display: flex;
+    justify-content: center;
     background-color: black;
 }
 .title {
@@ -7,7 +9,8 @@ body {
     font-size: 40px;
 }
 .container {
-    padding-top: 50px;
+    padding: 50px;
+    max-width: 1500px;
 }
 .container-img {
     display: flex;
@@ -17,7 +20,9 @@ body {
     font-size: 20px;
 }
 .info {
+    display: flex;
     flex-direction: column;
+    gap: 20px;
     color : white;
 }
 
@@ -28,23 +33,23 @@ body {
 }
 .genres {
     display: flex;
-    justify-content: space-around;    
+    flex-wrap: wrap;
+    justify-content: flex-start;    
+    gap: 20px;
 }
-.genreStyle{
 
-    outline: 2px solid rgb(119, 115, 115);
-    border-radius: 15px;
-    padding: 5px;
-}
 .production {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
 }
-.companyStyle {
-
-    outline: 2px solid rgb(119, 115, 115);
-    border-radius: 15px;
-    padding: 5px;
+.companyStyle, .genreStyle {
+    background-color: #fff;
+    width: max-content;
+    color: #000;
+    border-radius: 30px;
+    padding: 10px;
 }
 
 @media screen and (max-width: 738px) {

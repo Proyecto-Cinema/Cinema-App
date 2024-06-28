@@ -40,7 +40,7 @@ function PaginaPrincipal () {
           page: 1
         })
         const people = data.results.slice(0, 5)
-
+        console.log(data)
         setMostPopularPeople(people)
       } catch (error) {
       }
@@ -97,7 +97,7 @@ function PaginaPrincipal () {
                 key={person.id}
                 imageFilePath={person.profile_path}
                 personName={person.name}
-                ValoratePerson={person.vote_average}
+                valoratePerson={person.popularity}
                 id={person.id}
               />
             ))

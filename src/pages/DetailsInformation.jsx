@@ -113,24 +113,34 @@ function DetailsInformation () {
               <img className='imagen' src={`https://image.tmdb.org/t/p/w500${details.poster_path}`} alt={details.title} />
               <div className='info'>
                 <p>{details.overview}</p>
-                <p>Fecha e lanzamiento: <strong>{details.release_date}</strong></p>
+                <p>Fecha de lanzamiento: <strong>{details.release_date}</strong></p>
                 <p>{` ⭐${details.vote_average}`}</p>
                 <ReactStars value={(details.vote_average) / 2} edit={false} size={40} />
-                <div className='genres'>
-                  {details.genres.map((genre) => {
-                    return (
-                      <p key={genre.id} className='genreStyle'>{genre.name}</p>
-                    )
-                  })}
-                </div>
-                <div className='production'>
-                  {details.production_companies.map((company) => {
-                    console.log(company.id)
-                    return (
-                      <p key={company.id} className='companyStyle'>{company.name}</p>
-                    )
-                  })}
-                </div>
+                {
+                  details.genres.length !== 0
+                    ? <div className='genres'>
+                      <p>Genres</p>
+                      {details.genres.map((genre) => {
+                        return (
+                          <p key={genre.id} className='genreStyle'>{genre.name}</p>
+                        )
+                      })}
+                    </div>
+                    : null
+                }
+                {
+                  details.production_companies.length !== 0
+                    ? <div className='production'>
+                      <p>Production Companies</p>
+                      {details.production_companies.map((company) => {
+                        return (
+                          <p key={company.id} className='companyStyle'>{company.name}</p>
+                        )
+                      })}
+                      </div>
+                    : null
+                }
+
               </div>
             </div>
           </div>
