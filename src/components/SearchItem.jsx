@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom'
 import './SearchBar.css'
 
 const returnName = (searchItem, type) => {
-  if (type === 'movie') return searchItem.original_title
-  else if (type === 'tv') return searchItem.original_name
-  else if (type === 'person') return searchItem.original_name
+  if (type === 'movie') return searchItem.title
+  else if (type === 'tv') return searchItem.name
+  else if (type === 'person') return searchItem.name
 }
 
 const returnImage = (searchItem) => {
