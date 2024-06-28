@@ -1,19 +1,15 @@
-import { useState } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
-import SearchBar from './components/SearchBar'
-import DetailsInformation from './components/DetailsInformation'
+import { Routes, Route } from 'react-router-dom'
+import DetailsInformation from './pages/DetailsInformation'
 import './App.css'
-import PaginaPrincipal from './contenedores/PaginaPrincipal'
-/* import { useGlobalState } from './context/GlobalState' */
+import PaginaPrincipal from './pages/Home'
 
 function App () {
-
   return (
     <>
       <div>
         <Routes>
-          <Route path='/' element={<PaginaPrincipal />}></Route>
-          <Route path='/:type/details/:id' element={<DetailsInformation />}></Route>
+          <Route path='/' element={<PaginaPrincipal />} />
+          <Route path='/details/:type/:id' element={<DetailsInformation />} />
         </Routes>
       </div>
     </>
