@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import getSearch from '../services/getSearch'
 
-function useSearches (query, type, filters) {
+function useSearches (query, type) {
   const [searches, setSearches] = useState([])
   const [error, setError] = useState(false)
 
@@ -20,7 +20,7 @@ function useSearches (query, type, filters) {
       }
     }
     search()
-  }, [query, type, filters])
+  }, [query, type])
 
   return { searches, error, setSearches }
 }

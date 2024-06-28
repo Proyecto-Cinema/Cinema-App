@@ -1,14 +1,17 @@
 import { useState } from 'react'
-import SearchItem from './SearchItem'
+import SearchItems from './SearchItems'
 import useSearches from '../hooks/useSearches'
+import useFilteredSearches from '../hooks/useFilteredSearches'
 import GenreSelector from './GenreSelector'
 import './SearchBar.css'
 
-function SearchBar ({ canChoose = true, initialType = 'movie', showResults = true, showFilters = false, setOutsideSearch = null }) {
+function SearchBar ({ canChoose = true, initialType = 'movie', showResults = true, showFilters = false }) {
   const [query, setQuery] = useState('')
   const [type, setType] = useState(initialType)
+  const { searches } = useSearches(query, type)
   const [filters, setFilters] = useState([])
-  const { searches, error } = useSearches(query, type, filters)
+
+  const { filteredSearches } = useFilteredSearches(searches, filters)
 
   return (
 
@@ -19,7 +22,7 @@ function SearchBar ({ canChoose = true, initialType = 'movie', showResults = tru
               <option value='movie'>Movies</option>
               <option value='tv'>TV Shows</option>
               <option value='person'>Persons</option>
-            </select>
+              </select>
             : null
       }
       <input
@@ -29,16 +32,7 @@ function SearchBar ({ canChoose = true, initialType = 'movie', showResults = tru
       />
       {
         showResults
-          ? <div className='search-container'>
-            {
-              !error
-                ? searches.map((searchItem) => {
-                  return (
-                    <SearchItem searchItem={searchItem} key={searchItem.id} type={type} />
-                  )
-                })
-                : <div>error</div>
-          } </div>
+          ? <SearchItems type={type} searches={filteredSearches} />
           : null
       }
       {
