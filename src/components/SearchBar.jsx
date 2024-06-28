@@ -166,7 +166,7 @@ function SearchBar ({ canChoose = true, initialType = 'movie', showResults = tru
         })
         const search = data.results
 
-        setSearches(search.slice(0, 8))
+        setSearches(search.slice(0, 6))
         if(setOutsideSearch) {
           if(filters.length !== 0) {
             setOutsideSearch(search.filter((item) => {

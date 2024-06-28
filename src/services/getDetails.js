@@ -1,8 +1,8 @@
 import axiosDetails from './detailsInstance.js'
 
-async function getDetails (type, searchQuery) {
+async function getDetails (type, id, searchQuery) {
   const params = new URLSearchParams(searchQuery)
-  const search = await axiosDetails.get(`${type}?${params.toString()}`)
+  const search = await axiosDetails.get(`${type}/${id}?${params.toString()}`)
   return search
 }
 

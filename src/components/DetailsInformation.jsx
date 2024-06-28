@@ -1,6 +1,6 @@
 import ReactStars from 'react-rating-stars-component'
 import SearchBar from './SearchBar'
-import './Movie.css'
+import './DetailsInformation.css'
 import { useEffect, useState } from 'react'
 import getDetails from '../services/getDetails'
 import { useParams } from 'react-router-dom'
@@ -86,54 +86,61 @@ const mockResponse = {
         "vote_count": 1235
       
   }
-  function MovieInformation () {
-    const [type, setType] = useState('movie')
-    const { id } = useParams()
-    const [details, setDetails] = useState({})
+  function DetailsInformation () {
+    const { type, id } = useParams()
+    const [details, setDetails] = useState(null)
 
     useEffect(() => {
-      const getDetails = async () => {
+      const fetchDetails = async () => {
         try {
-          const info = await getDetails(type, { id: 653346 })
-          console.log(info)
+          const { data } = await getDetails(type, id);
+          setDetails(data)
         } catch (e) {
-          console.log(e)
+          console.log(e);
         }
-      }
-    }, [])
+      };
+      fetchDetails(); // Call the function here
+    }, [id, type]);
+
+    console.log(details)
 
     return (
       <>
     <SearchBar></SearchBar>
+    {
+      details ? (
     <div className='container'>
-      <h2 className='title'>{mockResponse.title}</h2>
+      <h2 className='title'>{details.title}</h2>
         <div className= 'container-img'>
-          <img className="imagen"src={`https://image.tmdb.org/t/p/w500${mockResponse.poster_path}`} alt={mockResponse.title} />
+          <img className="imagen"src={`https://image.tmdb.org/t/p/w500${details.poster_path}`} alt={details.title} />
             <div className="info">
-              <p>{mockResponse.overview}</p>
-              <p>Fecha e lanzamiento: <strong>{mockResponse.release_date}</strong></p>
-              <p>{` ⭐${mockResponse.vote_average}`}</p>
-              <ReactStars value={(mockResponse.vote_average)/2} edit={false} size={40}/>  
+              <p>{details.overview}</p>
+              <p>Fecha e lanzamiento: <strong>{details.release_date}</strong></p>
+              <p>{` ⭐${details.vote_average}`}</p>
+              <ReactStars value={(details.vote_average)/2} edit={false} size={40}/>  
               <div className="genres">
-                {mockResponse.genres.map((genre) => {
+                {details.genres.map((genre) => {
                 return (
-                <p className="genreStyle">{genre.name}</p>
+                <p key={genre.id} className="genreStyle">{genre.name}</p>
                 )})}   
               </div>
               <div className="production">
-                {mockResponse.production_companies.map((company) => {
+                {details.production_companies.map((company) => {
+                  console.log(company.id)
                 return (
-                <p className="companyStyle">{company.name}</p>)
+                <p key={company.id} className="companyStyle">{company.name}</p>)
                 })}
               </div>
             </div>
         </div>           
     </div>
+      ) : <div>Loading...</div>
+    }
       </>
     )
   }
 
-  export default MovieInformation
+  export default DetailsInformation
 
 
 

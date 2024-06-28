@@ -64,7 +64,7 @@ function PaginaPrincipal () {
             rating={movie.vote_average || 5}
             imgPath={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
             alt={movie.title || movie.name || 'Película'}
-            type='movies'
+            type='movie'
             id={movie.id}
           />
         ))}

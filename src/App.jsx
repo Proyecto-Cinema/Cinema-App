@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import SearchBar from './components/SearchBar'
-import MovieInformation from './components/Movie'
+import DetailsInformation from './components/DetailsInformation'
 import './App.css'
 import PaginaPrincipal from './contenedores/PaginaPrincipal'
 /* import { useGlobalState } from './context/GlobalState' */
@@ -13,7 +13,7 @@ function App () {
       <div>
         <Routes>
           <Route path='/' element={<PaginaPrincipal />}></Route>
-          <Route path='/movies/details/:id' element={<MovieInformation />}></Route>
+          <Route path='/:type/details/:id' element={<DetailsInformation />}></Route>
         </Routes>
       </div>
     </>
