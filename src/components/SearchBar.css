@@ -9,6 +9,7 @@
     gap: 10px;
     padding: 10px 20px;
     backdrop-filter: blur(10px);
+    background-color: #222a;
 }
 
 .search-container {
@@ -22,6 +23,7 @@
     border-bottom-left-radius: 10px;
     backdrop-filter: blur(10px);
     padding: 0 10px;
+    background-color: #222a;
 }
 .links-container {
     display: flex;

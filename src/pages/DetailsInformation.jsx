@@ -101,6 +101,8 @@ function DetailsInformation () {
     fetchDetails() // Call the function here
   }, [id, type])
 
+  console.log(details)
+
   return (
     <>
       <SearchBar showFilters />
@@ -108,9 +110,9 @@ function DetailsInformation () {
       details
         ? (
           <div className='container'>
-            <h2 className='title'>{details.title}</h2>
+            <h2 className='title'>{details.title || details.name}</h2>
             <div className='container-img'>
-              <img className='imagen' src={`https://image.tmdb.org/t/p/w500${details.poster_path}`} alt={details.title} />
+              <img className='imagen' src={`https://image.tmdb.org/t/p/w500${details.poster_path}`} alt={details.title || details.name} />
               <div className='info'>
                 <p>{details.overview}</p>
                 <p>Fecha de lanzamiento: <strong>{details.release_date}</strong></p>
@@ -125,7 +127,7 @@ function DetailsInformation () {
                           <p key={genre.id} className='genreStyle'>{genre.name}</p>
                         )
                       })}
-                    </div>
+                      </div>
                     : null
                 }
                 {
@@ -137,7 +139,7 @@ function DetailsInformation () {
                           <p key={company.id} className='companyStyle'>{company.name}</p>
                         )
                       })}
-                      </div>
+                    </div>
                     : null
                 }
 
