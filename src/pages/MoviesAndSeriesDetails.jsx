@@ -3,6 +3,8 @@ import ReactStars from "react-rating-stars-component";
 import "./DetailsGeneralStyles.css";
 
 function MoviesAndSeriesDetails({ details }) {
+    /*   */
+
   return (
     <div className="container">
       <h2 className="title">{details.title}</h2>
