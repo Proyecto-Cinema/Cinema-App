@@ -13,7 +13,7 @@ function TarjetaRecomendacion ({ rating, imgPath, alt, title, type, id }) {
           <img className='rating-img' src={starImage} alt='rating' />
           <p className='rating-text'>{rating}</p>
         </div>
-        <h1 className='title-text'>{title}</h1>
+        <h4 className='title-text'>{title}</h4>
       </div>
     </Link>
   )

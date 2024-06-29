@@ -1,25 +1,15 @@
 import './Person.css'
 import { Link } from 'react-router-dom'
 
-function Person ({ id, imageFilePath, personName, ValoratePerson }) {
+function Person ({ id, imageFilePath, personName, valoratePerson }) {
   return (
-    <Link to={`/person/details/${id}`} className='container'>
-      <div className='circular-effect'>
-        <div className='container-imagen'>
-          <img className='profiles' src={`https://image.tmdb.org/t/p/w500${imageFilePath}`} />
+    <Link to={`/details/person/${id}`} className='person-container'>
+      <img className='person-img' src={`https://image.tmdb.org/t/p/w200${imageFilePath}`} alt={personName} />
+      <div className='information-container'>
+        <div className='rating'>
+          <p className='rating-text'>{valoratePerson}</p>
         </div>
-      </div>
-      <div className='information'>
-        <div className='Valoracion'>
-          {
-        ValoratePerson
-      }
-          <div className='Nombre'>
-            {
-        personName
-      }
-          </div>
-        </div>
+        <h4 className='title-text'>{personName}</h4>
       </div>
     </Link>
   )

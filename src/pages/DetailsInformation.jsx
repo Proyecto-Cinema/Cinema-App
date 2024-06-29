@@ -100,6 +100,8 @@ function DetailsInformation() {
     fetchDetails(); // Call the function here
   }, [id, type]);
 
+  console.log(details)
+
   return (
     <>
       <SearchBar showFilters />
