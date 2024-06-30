@@ -25,6 +25,7 @@ body {
 .imagen {
     width: 40vw;
     object-fit: contain;
+    max-width: 400px;
 }
 .genres {
     display: flex;
