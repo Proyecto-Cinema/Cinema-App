@@ -39,10 +39,10 @@ body {
 }
 .production {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    margin-top: 30px;
 }
 .companyStyle {
-
     outline: 2px solid rgb(119, 115, 115);
     border-radius: 15px;
     padding: 5px;

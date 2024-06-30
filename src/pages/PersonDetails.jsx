@@ -3,7 +3,7 @@ import ReactStars from "react-rating-stars-component";
 import "./DetailsGeneralStyles.css";
 import "./PersonDetails.css";
 
-function PersonDetails({ details }) {
+function PersonDetails({ details, type }) {
   console.log(details);
 
   return (
@@ -44,13 +44,15 @@ function PersonDetails({ details }) {
             })}
           </div> */}
           </div>
-          {details.deathday ? (
-            <p className="info-text">
-              {details.birthday} - {details.deathday}
-            </p>
-          ) : (
-            <p className="info-text">{details.birthday} - Actualidad</p>
-          )}
+          {!details.birthday ? (
+                <p className="info-text">no definido</p>
+            ) : (
+              details.deathday ? (
+                    <p className="info-text">{birthday} - {deathday}</p>
+                ) : (
+                    <p className="info-text">{birthday} - Actualidad</p>
+                )
+            )}
         </div>
       </div>
     </div>

@@ -1,9 +1,9 @@
 import React from "react";
 import ReactStars from "react-rating-stars-component";
 import "./DetailsGeneralStyles.css";
+import ContenidosRelacionados from "../components/ContenidosRelacionados";
 
-function MoviesAndSeriesDetails({ details }) {
-    /*   */
+function MoviesAndSeriesDetails({ details, type }) {
 
   return (
     <div className="container">
@@ -23,7 +23,7 @@ function MoviesAndSeriesDetails({ details }) {
           <ReactStars value={details.vote_average / 2} edit={false} size={40} />
           <div className="genres">
             {details.genres.map((genre) => {
-              console.log("genre: ", genre);
+              /* console.log("genre: ", genre); */
               return (
                 <p key={genre.id} className="genreStyle">
                   {genre.name}
@@ -43,6 +43,7 @@ function MoviesAndSeriesDetails({ details }) {
           </div>
         </div>
       </div>
+      <ContenidosRelacionados type={type} id={details.id}/>
     </div>
   );
 }
