@@ -1,21 +1,27 @@
-import { Link, Route, Routes } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
+import DetailsInformation from './pages/DetailsInformation'
 import './App.css'
-/* import { useGlobalState } from './context/GlobalState' */
+import PaginaPrincipal from './pages/Home'
+import SearchBar from './components/SearchBar'
+import Search from './pages/Search'
+import SearchPerson from './pages/SearchPerson'
+import { SearchProvider } from './context/SearchContext'
 
 function App () {
-  /* const { estadoPrueba, setEstadoPrueba } = useGlobalState()  *//* Los estados se importan del contexto */
-
   return (
-
-    <div>
-      <Link to='/'>Home</Link>
-      <Link to='/about'>About</Link>
-      <Routes>
-        <Route path='/' element={<h1>Home</h1>}>Home</Route>
-        <Route path='/about' element={<h1>About</h1>}>About</Route>
-      </Routes>
-    </div>
-
+    <>
+      <div>
+        <SearchProvider>
+          <SearchBar />
+          <Routes>
+            <Route path='/' element={<PaginaPrincipal />} />
+            <Route path='/details/:type/:id' element={<DetailsInformation />} />
+            <Route path='/search/:type/:genre/:query/:page' element={<Search />} />
+            <Route path='/search/:type/:query/:page' element={<SearchPerson />} />
+          </Routes>
+        </SearchProvider>
+      </div>
+    </>
   )
 }
 
