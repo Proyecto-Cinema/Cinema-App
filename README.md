@@ -5,5 +5,3 @@ Para correr este proyecto:
 -npm install
 
 -npm run dev
-
-Vista online: https://dev--proyectocinemaapp.netlify.app
