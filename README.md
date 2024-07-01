@@ -9,7 +9,3 @@ Console:
 -npm install
 
 -npm run dev
-
-Online view:
-https://development--cinemaappproyect.netlify.app/
-
