@@ -15,7 +15,7 @@ function ContenidosRelacionados({ type, id }) {
         setSimilarContent(data.results);
         if (data.results.length === 0) {
           const popularData = await getDiscover(type, { page: 1 });
-          setPopularContent(popularData.results.slice(0, 5));
+          setPopularContent(popularData.data.results.slice(0, 15));
         }
       } catch (error) {
         console.error('Error fetching similar content:', error);
