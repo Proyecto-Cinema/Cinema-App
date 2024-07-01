@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import "./DetailsGeneralStyles.css";
 import "./PersonDetails.css";
+import Person from "../components/Person";
+import getDiscover from "../services/getDiscover";
 
 function PersonDetails({ details, type }) {
-  console.log(details);
+  /* console.log("person details: ", details); */
+
+  const [mostPopularPeople, setMostPopularPeople] = useState([]);
+
+  useEffect(() => {
+    const searchPopularPeople = async () => {
+      try {
+        const { data } = await getDiscover("person", {
+          page: 1,
+        });
+        const people = data.results.slice(0, 8);
+        console.log(data);
+        setMostPopularPeople(people);
+      } catch (error) {console.log(error)}
+    };
+
+    searchPopularPeople();
+  }, []);
 
   return (
     <div className="container">
@@ -18,41 +37,32 @@ function PersonDetails({ details, type }) {
         <div className="info-container">
           <div className="person-info">
             <p>{details.biography}</p>
-            {/* <p>
-            Fecha e lanzamiento: <strong>{details.release_date}</strong>
-          </p> */}
-            {/* <p>{` ⭐${details.vote_average}`}</p>
-          <ReactStars value={details.vote_average / 2} edit={false} size={40} />
-          <div className="genres">
-            {details.genres.map((genre) => {
-              console.log("genre: ", genre);
-              return (
-                <p key={genre.id} className="genreStyle">
-                  {genre.name}
-                </p>
-              );
-            })}
-          </div> */}
-            {/* <div className="production">
-            {details.production_companies.map((company) => {
-              // console.log(company.id)
-              return (
-                <p key={company.id} className="companyStyle">
-                  {company.name}
-                </p>
-              );
-            })}
-          </div> */}
           </div>
           {!details.birthday ? (
-                <p className="info-text">no definido</p>
-            ) : (
-              details.deathday ? (
-                    <p className="info-text">{birthday} - {deathday}</p>
-                ) : (
-                    <p className="info-text">{birthday} - Actualidad</p>
-                )
-            )}
+            <p className="info-text">no definido</p>
+          ) : details.deathday ? (
+            <p className="info-text">
+              {details.birthday} - {details.deathday}
+            </p>
+          ) : (
+            <p className="info-text">{details.birthday} - Actualidad</p>
+          )}
+
+          <p className="info-text"> {details.place_of_birth}</p>
+        </div>
+      </div>
+      <div className="contenedor-personas-relacionadas">
+        <h1 className="info-text">You might also like</h1>
+        <div className="principal-contenedor-recomendaciones">
+          {mostPopularPeople.map((person) => (
+            <Person
+              key={person.id}
+              imageFilePath={person.profile_path}
+              personName={person.name}
+              valoratePerson={person.popularity}
+              id={person.id}
+            />
+          ))}
         </div>
       </div>
     </div>
