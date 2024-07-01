@@ -27,7 +27,7 @@ function ContenidosRelacionados({ type, id }) {
 
   return (
     <div className="contenedor-principal">
-      <h1>{similarContent.length > 0 ? "Contenido Relacionado" : "Contenido Popular (no se encontró relacionado)"}</h1>
+      <h1>{similarContent.length > 0 ? "Realted content" : "Popular content (related content wasn't found)"}</h1>
       <div className="principal-contenedor-recomendaciones">
         {similarContent.length > 0 ? (
           similarContent.map((movie) => (

@@ -1,12 +1,15 @@
 .person-info {
-    height: 20vh;
-    background-color: rgb(51, 51, 51);
+    height: 60%;
+    /* background-color: rgb(51, 51, 51); */
     color: white;
     overflow: auto;
     padding: 10px;
+    font-size: x-large;
+    max-height: 400px;
 }
 
 .info-text {
     font-size: 30px;
     color : white;
+    margin: 20px 0px;
 }
