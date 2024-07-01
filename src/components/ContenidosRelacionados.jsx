@@ -26,7 +26,7 @@ function ContenidosRelacionados({ type, id }) {
   }, [id, type]);
 
   return (
-    <div className="contenedor-principal">
+    <div className="related-content-container">
       <h1>{similarContent.length > 0 ? "Realted content" : "Popular content (related content wasn't found)"}</h1>
       <div className="principal-contenedor-recomendaciones">
         {similarContent.length > 0 ? (

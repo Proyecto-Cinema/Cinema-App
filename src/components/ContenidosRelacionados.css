@@ -1,7 +1,7 @@
-.contenedor-principal{
+.related-content-container{
+    display: flex;
+    flex-wrap: wrap;
     background-color: #000;
-    height: 50vh    ;
     width: 100%;
-    max-width: none;
     padding: 0;
 }

@@ -38,7 +38,6 @@ function PaginaPrincipal() {
           page: 1,
         });
         const people = data.results.slice(0, 5);
-        console.log(data);
         setMostPopularPeople(people);
       } catch (error) {}
     };
@@ -50,7 +49,6 @@ function PaginaPrincipal() {
 
   return (
     <>
-      <SearchBar />
       <div className="contenedor-principal">
         <div>
         <h1>Peliculas populares</h1>

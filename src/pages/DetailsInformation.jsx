@@ -12,9 +12,7 @@ function DetailsInformation() {
   useEffect(() => {
     const fetchDetails = async () => {
       try {
-        console.log("type: ", type, "id: ", id);
         const { data } = await getDetails(type, id);
-        /* console.log("data: ", data); */
         setDetails(data);
       } catch (e) {
         console.log(e);
@@ -24,11 +22,8 @@ function DetailsInformation() {
   }, [id, type]);
   
 
-  /* console.log("type: ", type, "id: ", id); */
-
   return (
     <>
-      <SearchBar showFilters />
       {!details ? (
         <div>Loading...</div>
       ) : type === 'person' ? (

@@ -16,10 +16,10 @@ function MoviesAndSeriesDetails({ details, type }) {
         <div className="info">
           <p>{details.overview}</p>
           <p>
-            Fecha e lanzamiento: <strong>{details.release_date}</strong>
+            Relase date: <strong>{details.release_date}</strong>
           </p>
           <p>{` ⭐${details.vote_average}`}</p>
-          <ReactStars value={details.vote_average / 2} edit={false} size={40} />
+          <ReactStars classNames={"stars"} value={details.vote_average / 2} edit={false} size={40} />
           <div className="tags-container">
             <div className="genres">
               {details.genres.map((genre) => {
@@ -44,6 +44,7 @@ function MoviesAndSeriesDetails({ details, type }) {
           </div>
         </div>
       </div>
+      <h3 className="info-text">You might also like</h3>
       <ContenidosRelacionados type={type} id={details.id} />
     </div>
   );

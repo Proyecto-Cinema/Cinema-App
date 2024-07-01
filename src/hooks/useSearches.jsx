@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import getSearch from '../services/getSearch'
 
-function useSearches (query, type) {
+function useSearches (query, type, page = 1) {
   const [searches, setSearches] = useState([])
   const [error, setError] = useState(false)
 
@@ -10,7 +10,7 @@ function useSearches (query, type) {
       try {
         const { data } = await getSearch(type, {
           query,
-          page: 1
+          page
         })
         const search = data.results
 

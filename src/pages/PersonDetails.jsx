@@ -52,7 +52,7 @@ function PersonDetails({ details, type }) {
         </div>
       </div>
       <div className="contenedor-personas-relacionadas">
-        <h1 className="info-text">You might also like</h1>
+        <h3 className="info-text">You might also like</h3>
         <div className="principal-contenedor-recomendaciones">
           {mostPopularPeople.map((person) => (
             <Person

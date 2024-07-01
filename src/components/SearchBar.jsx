@@ -1,18 +1,23 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import SearchItems from './SearchItems'
 import useSearches from '../hooks/useSearches'
 import useFilteredSearches from '../hooks/useFilteredSearches'
 import GenreSelector from './GenreSelector'
 import './SearchBar.css'
 
-function SearchBar ({ canChoose = true, initialType = 'movie', showResults = true, showFilters = false }) {
+function SearchBar ({showResults = true }) {
   const [query, setQuery] = useState('')
-  const [type, setType] = useState(initialType)
+  const { type: initialType } = useParams()
+  const location = useLocation()
+  const showFilters = location.pathname !== '/'
+  const canChoose = !location.pathname.includes('details')
+  const [type, setType] = useState(initialType ? initialType : 'movie')
   const { searches } = useSearches(query, type)
-  const [filters, setFilters] = useState([])
+  const [filter, setFilter] = useState('')
 
-  const { filteredSearches } = useFilteredSearches(searches, filters)
+
+  const { filteredSearches } = useFilteredSearches(searches, filter)
 
   return (
     <>
@@ -34,7 +39,7 @@ function SearchBar ({ canChoose = true, initialType = 'movie', showResults = tru
       }
         {
         showFilters && type !== 'person'
-          ? <GenreSelector type={type} setFilters={setFilters} />
+          ? <GenreSelector type={type} setFilter={setFilter} />
           : null
       }
         <input

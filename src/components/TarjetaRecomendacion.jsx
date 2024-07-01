@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom' // Importa el componente Link de react-r
 function TarjetaRecomendacion ({ rating, imgPath, alt, title, type, id }) {
   return (
     <Link to={`/details/${type}/${id}`} className='contenedor-pelicula'>
-      <img className='imagen-tarjeta' src={imgPath} alt={alt} />
+      <img className='imagen-tarjeta' src={imgPath} alt={alt} onError={(e) => {
+            e.target.src = 'https://th.bing.com/th/id/OIP.iEE5Pq8P83xrKvMzG3g4GQE8DF?rs=1&pid=ImgDetMain'
+          }} />
       <div className='contenedor-pelicula_informacion'>
         <div className='contenedor-rating'>
           <img className='rating-img' src={starImage} alt='rating' />
