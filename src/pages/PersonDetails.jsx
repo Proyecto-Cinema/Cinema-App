@@ -6,7 +6,6 @@ import Person from "../components/Person";
 import getDiscover from "../services/getDiscover";
 
 function PersonDetails({ details, type }) {
-  /* console.log("person details: ", details); */
 
   const [mostPopularPeople, setMostPopularPeople] = useState([]);
 
@@ -39,13 +38,13 @@ function PersonDetails({ details, type }) {
             <p>{details.biography}</p>
           </div>
           {!details.birthday ? (
-            <p className="info-text">no definido</p>
+            <p className="info-text">not defined</p>
           ) : details.deathday ? (
             <p className="info-text">
               {details.birthday} - {details.deathday}
             </p>
           ) : (
-            <p className="info-text">{details.birthday} - Actualidad</p>
+            <p className="info-text">{details.birthday} - Today</p>
           )}
 
           <p className="info-text"> {details.place_of_birth}</p>

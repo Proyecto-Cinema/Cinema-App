@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
+import useSearchContext from './useSearchContext'
 
 function useFilteredSearches (searches, filters) {
-  const [filteredSearches, setFilteredSearches] = useState([])
+  const {filteredSearches, setFilteredSearches} = useSearchContext()
 
   useEffect(() => {
     if (filters.length !== 0) {

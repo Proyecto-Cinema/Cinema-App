@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import getSearch from '../services/getSearch'
+import useSearchContext from './useSearchContext.jsx'
 
 function useSearches (query, type, page = 1) {
-  const [searches, setSearches] = useState([])
+  const {searches, setSearches} = useSearchContext()
   const [error, setError] = useState(false)
 
   useEffect(() => {
@@ -14,13 +15,13 @@ function useSearches (query, type, page = 1) {
         })
         const search = data.results
 
-        setSearches(search.slice(0, 6))
+        setSearches(search)
       } catch {
         setError(true)
       }
     }
     search()
-  }, [query, type])
+  }, [query, type, page])
 
   return { searches, error, setSearches }
 }

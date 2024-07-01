@@ -1,21 +1,22 @@
 import { useState } from 'react'
-import { Link, useLocation, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams, useNavigate } from 'react-router-dom'
 import SearchItems from './SearchItems'
 import useSearches from '../hooks/useSearches'
 import useFilteredSearches from '../hooks/useFilteredSearches'
 import GenreSelector from './GenreSelector'
 import './SearchBar.css'
 
-function SearchBar ({showResults = true }) {
-  const [query, setQuery] = useState('')
-  const { type: initialType } = useParams()
+function SearchBar () {
+  const params = useParams()
+  const { query: initialQuery, type: initialType } = useParams()
+  const [query, setQuery] = useState(initialQuery ? initialQuery : '')
   const location = useLocation()
+  const showResults = !location.pathname.includes('search')
   const showFilters = location.pathname !== '/'
-  const canChoose = !location.pathname.includes('details')
+  const canChoose = !location.pathname.includes('details') && !location.pathname.includes('search')
   const [type, setType] = useState(initialType ? initialType : 'movie')
   const { searches } = useSearches(query, type)
   const [filter, setFilter] = useState('')
-
 
   const { filteredSearches } = useFilteredSearches(searches, filter)
 
@@ -47,6 +48,11 @@ function SearchBar ({showResults = true }) {
             setQuery(event.target.value)
           }}
         />
+          {
+            type === 'person'
+              ? <Link to={`/search/${type}/${query}/1`} className='search-link'>Search</Link>
+              : <Link to={`/search/${type}/${filter ? filter : 'all'}/${query}/1`} className='search-link'>Search</Link>
+          }
 
       </div>
     </nav>

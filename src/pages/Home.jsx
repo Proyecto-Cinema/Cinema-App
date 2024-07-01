@@ -51,16 +51,16 @@ function PaginaPrincipal() {
     <>
       <div className="contenedor-principal">
         <div>
-        <h1>Peliculas populares</h1>
+        <h2>Popular movies</h2>
           <div className="principal-contenedor-recomendaciones">
             
             {mostPopularMovies.map((movie) => (
               <TarjetaRecomendacion
                 key={movie.id}
-                title={movie.title || movie.name || "Un título"}
+                title={movie.title || movie.name || "Title"}
                 rating={movie.vote_average || 5}
                 imgPath={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                alt={movie.title || movie.name || "Película"}
+                alt={movie.title || movie.name || "Name"}
                 type="movie"
                 id={movie.id}
               />
@@ -69,24 +69,23 @@ function PaginaPrincipal() {
         </div>
 
         <div>
-          <h1>Series mas populares</h1>
+          <h2>Popular series</h2>
           <div className="principal-contenedor-recomendaciones">
             {mostPopularSeries.map((serie) => (
               <TarjetaRecomendacion
                 key={serie.id}
-                title={serie.title || serie.name || "Un título"}
+                title={serie.title || serie.name || "Title"}
                 rating={serie.vote_average || 5}
                 imgPath={`https://image.tmdb.org/t/p/w200${serie.poster_path}`}
-                alt={serie.title || serie.name || "Película"}
+                alt={serie.title || serie.name || "Name"}
                 id={serie.id}
                 type="tv"
               />
             ))}
           </div>
         </div>
-
         <div>
-          <h1>Personas mas populares</h1>
+          <h2>Popular celebreties</h2>
           <div className='principal-contenedor-recomendaciones'>
             {
             mostPopularPeople.map((person) => (

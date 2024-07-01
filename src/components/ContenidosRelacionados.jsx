@@ -33,10 +33,10 @@ function ContenidosRelacionados({ type, id }) {
           similarContent.map((movie) => (
             <TarjetaRecomendacion
               key={movie.id}
-              title={movie.title || movie.name || "Un título"}
+              title={movie.title || movie.name || "Title"}
               rating={movie.vote_average || 5}
               imgPath={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-              alt={movie.title || movie.name || "Película"}
+              alt={movie.title || movie.name || "Name"}
               type={type}
               id={movie.id}
             />
@@ -45,10 +45,10 @@ function ContenidosRelacionados({ type, id }) {
           popularContent.map((content) => (
             <TarjetaRecomendacion
               key={content.id}
-              title={content.title || content.name || "Un título"}
+              title={content.title || content.name || "Title"}
               rating={content.vote_average || 5}
               imgPath={`https://image.tmdb.org/t/p/w200${content.poster_path}`}
-              alt={content.title || content.name || "Película"}
+              alt={content.title || content.name || "Name"}
               type={type}
               id={content.id}
             />
